@@ -2,13 +2,18 @@
     "compilerOptions": {
         "allowSyntheticDefaultImports": true,
         "noImplicitAny": true,
-        "module": "CommonJS",
-        "target": "ES2015",
+        "module": "esnext",
+        "target": "ESNext",
         "allowJs": true,
         "outDir": "dist",
         "moduleResolution": "Node",
         "allowUmdGlobalAccess": true,
-        "declaration": true
+        "declaration": true,
+        "types": ["node"],
+        "esModuleInterop": true,
+
+        "skipLibCheck": true,
+        "resolveJsonModule": true
     },
-    "files": ["src/index.ts"]
+    "files": ["src/index.ts", "src/typing.ts"]
 }
