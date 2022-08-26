@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "noImplicitAny": true,
+        "module": "CommonJS",
+        "target": "ES2015",
+        "allowJs": true,
+        "outDir": "dist",
+        "moduleResolution": "Node",
+        "allowUmdGlobalAccess": true,
+        "declaration": true
+    },
+    "files": ["src/index.ts"]
+}
