@@ -1,8 +1,9 @@
-import nodefetch from "node-fetch";
+// import nodefetch from "node-fetch";
 import webpack from "webpack";
 import { query } from "./typing";
 const address = "http://demo.vimjs.com:10006/api/builds/create?";
 const PluginName = "BuildsWebpackPlugin";
+import https from "http";
 /**
  * 插件-打包完请求
  * @see http://demo.vimjs.com:10006
@@ -12,7 +13,7 @@ class BuildsWebpackPlugin {
     content: string;
     fn: () => Promise<void>;
     constructor(param: query) {
-        this.content = param.cotent;
+        this.content = param.content;
         this.email = param.email;
         this.fn = param.fn;
     }
@@ -22,13 +23,24 @@ class BuildsWebpackPlugin {
                 await this.fn();
                 return;
             }
-            await nodefetch(
-                ` ${address}email=${this.email}&content=${this.content}`
-            )
-                .then(res => res.text())
-                .then(res => console.log(res));
+            const req = https.request(
+                `${address}email=${this.email}&content=${this.content}`,
+                res => {
+                    console.log(`状态码: ${JSON.stringify(res.statusMessage)}`);
+
+                    res.on("data", (d: Buffer) => {
+                        console.log(d.toString());
+                    });
+                }
+            );
+
+            req.on("error", error => {
+                console.log("error");
+            });
+
+            req.end();
         });
     }
 }
 
-export { BuildsWebpackPlugin, query };
+export = BuildsWebpackPlugin;

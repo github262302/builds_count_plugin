@@ -1,19 +1,17 @@
 {
     "compilerOptions": {
-        "allowSyntheticDefaultImports": true,
-        "noImplicitAny": true,
-        "module": "esnext",
-        "target": "ESNext",
-        "allowJs": true,
+        "module": "CommonJS",
+
         "outDir": "dist",
-        "moduleResolution": "Node",
-        "allowUmdGlobalAccess": true,
-        "declaration": true,
-        "types": ["node"],
         "esModuleInterop": true,
 
-        "skipLibCheck": true,
-        "resolveJsonModule": true
+        "declaration": true,
+        "declarationDir": "dist",
+        "listFiles": true,
+        "moduleResolution": "Node"
     },
-    "files": ["src/index.ts", "src/typing.ts"]
+    "files": ["src/index.ts", "src/typing.ts"],
+    "include": ["src/**/*"],
+    "exclude": ["node_modules/**/*"],
+    "typeAcquisition": {}
 }

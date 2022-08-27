@@ -4,3 +4,5 @@ src
 .prettierrc.js
 .log
 .lock
+.gitattributes
+tsconfig.json
